@@ -1,0 +1,31 @@
+.status-available {
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: greenyellow;
+    text-align: center;
+}
+
+.status-outOfStock {
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgb(237, 63, 77);
+    text-align: center;
+}
+
+.status-preOrder {
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: skyblue;
+    text-align: center;
+}
+
+.status-discontinued {
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgb(241, 186, 84);
+    text-align: center;
+}

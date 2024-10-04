@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+
+    <!-- link bs5 css file -->
+    <link rel="stylesheet" href="resources/bootstrap-5.2.3/css/bootstrap.min.css" />
+
+    <!-- link fontawesome css file -->
+    <link rel="stylesheet" href="resources/fontawesome-free-6.4.2/css/all.css" />
+
+    <!-- link custom css file -->
+    <link rel="stylesheet" href="resources/style/login.css">
+
+
+
+    <!-- link common css file -->
+    <!-- <link rel="stylesheet" href="resources/style/common.css" /> -->
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="form-box">
+            <h2>Login Form</h2>
+            <form action="/login" method="post">
+
+                <div class="input-box">
+                    <span class="icon"><i class="fa-solid fa-user"></i></span>
+                    <input type="text" name="username" id="textUsername" required><br>
+                    <label>Username</label>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><i class="fa-solid fa-lock"></i></span>
+                    <input type="password" name="password" id="textPassword" required><br>
+                    <label>Password</label>
+                </div>
+
+                <button type="submit" class="btn btnHover fw-bold">Log in</button>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

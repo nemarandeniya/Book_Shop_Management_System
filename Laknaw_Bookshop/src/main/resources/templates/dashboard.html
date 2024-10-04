@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head th:replace="~{component::headerFragment}"></head>
+
+<head>
+    <title th:text="${title}"></title>
+</head>
+
+<body style="background-color: rgb(185, 186, 186);">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top" style="background-color:  #FFFFFF; height: 60px;"
+        th:fragment="navbarFragment">
+        <div class="container-fluid">
+            <button class="btn text-light" style="background-color:  #202123;" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
+                backdrop</button>
+            <h1 class="navbar-brand text-dark" style="font-style:italic;">Welcome <span th:text="${logusername}"></span>
+            </h1>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+        </div>
+    </nav>
+
+
+    <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
+        aria-labelledby="offcanvasWithBothOptionsLabel" th:fragment="vertical-nav">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Backdrop with scrolling</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <p>Try scrolling the rest of the page to see this option in action.</p>
+        </div>
+    </div>
+
+    <h2>Dashboard</h2>
+</body>
+
+</html>

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="~{component::headerFragment}"></head>
+
+<head>
+    <!-- link User css file -->
+    <link rel="stylesheet" href="resources/style/item.css">
+
+    <!-- link js file -->
+    <script src="controllerjs/item.js"></script>
+    <title th:text="${title}"></title>
+
+</head>
+
+<body style="background-color:  #E6EBEE">
+
+    <nav th:replace="~{component::navbarFragment}"></nav>
+
+
+    <div class="container-fluid mt-5">
+        <div class="card-body">
+            <div class="row m-3">
+                <div class="text-center text-dark" style="margin-top: 50px;">
+                    <h2><span><i class="fa-solid fa-user  me-3"></i> </span>Item Management</h2>
+                </div>
+            </div>
+
+            <!-- form area start -->
+            <div class="row">
+                <div class="col-1"></div>
+                <div class="col-10">
+                    <button class="btn btnHover fw-bold" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseWidthExample" aria-expanded="false"
+                        aria-controls="collapseWidthExample">
+                        Add new Details
+                    </button>
+                    <button class="btn btnHover fw-bold" onclick="printEmployeeTableBtn()">Print
+                    </button>
+                    <div style="min-height: 10px;">
+                        <div class="collapse collapse-horizontal" id="collapseWidthExample">
+                            <div class="card card-body text-dark" style="width: 1100px;">
+                                <form id="formItem" onsubmit="return false">
+
+                                    <div class="row mt-5">
+                                        <div class="col-12">
+                                            <span class="text-danger">*</span>Required
+                                        </div>
+                                    </div>
+
+                                    <!-- book title -->
+                                    <div class="row">
+                                        <label for="" class="col-4 col-form-label fw-bold text-dark">
+                                            Book Title : <span class="text-danger">*</span>
+                                        </label>
+                                        <div class="col-8">
+                                            <div class="input-group">
+                                                <span class="input-group-text">
+                                                    <i class="fa-solid fa-book"></i>
+                                                </span>
+                                                <input type="text" id="textBookTitle" class="form-control" required
+                                                    placeholder="Enter Book Title" onkeyup="fullNameValidator(this);">
+                                            </div>
+                                        </div>
+                                    </div><br>
+
+                                    <!-- author, Genre -->
+                                    <div class="row">
+                                        <label for="" class="col-6 col-form-label fw-bold text-dark">
+                                            Author : <span class="text-danger">*</span>
+                                        </label>
+                                        <label for="" class="col-6 col-form-label fw-bold text-dark">
+                                            Genre : <span class="text-danger">*</span>
+                                        </label>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="input-group">
+                                                <span class="input-group-text">
+                                                    <i class="fa-solid fa-user"></i>
+                                                </span>
+                                                <input type="text" id="textAuthor" class="form-control" required
+                                                    placeholder="enter Author Name" onkeyup="fullNameValidator(this);">
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <select id="selectGenre" class="form-select" required
+                                                onchange="selectDynamicValidator(this,'item','genre_id')">
+                                                <option value="" selected disabled>Select Genre</option>
+                                            </select>
+                                        </div>
+                                    </div> <br>
+
+                                    <!-- Sub genre , package type , brand type   -->
+                                    <div class="row">
+                                        <label for="" class="col-4 col-form-label fw-bold text-dark">
+                                            Sub-genre : <span class="text-danger">*</span>
+                                        </label>
+                                        <label for="" class="col-4 col-form-label fw-bold text-dark">
+                                            Package-Type : <span class="text-danger">*</span>
+                                        </label>
+                                        <label for="" class="col-4 col-form-label fw-bold text-dark">
+                                            Brand :
+                                        </label>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-4">
+                                            <select id="selectSubGenre" class="form-select" required
+                                                onchange="selectDynamicValidator(this,'item','subgenre_id')">
+                                                <option value="" selected disabled>Select Sub-genre</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-4">
+                                            <select id="selectPackageType" class="form-select" required
+                                                onchange="selectDynamicValidator(this,'item','packagetype_id')">
+                                                <option value="" selected disabled>Select Package type</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-4">
+                                            <select id="selectBrand" class="form-select"
+                                                onchange="selectDynamicValidator(this,'item','brand_id')">
+                                                <option value="" selected disabled>Select Brand</option>
+                                            </select>
+                                        </div>
+                                    </div><br>
+
+
+                                    <!--ISBN , Quantity, status-->
+
+                                    <div class="row">
+                                        <label for="" class="col-4 col-form-label fw-bold text-dark">
+                                            ISBN : <span class="text-danger">*</span>
+                                        </label>
+                                        <label for="" class="col-4 col-form-label fw-bold text-dark">
+                                            Quantity : <span class="text-danger">*</span>
+                                        </label>
+                                        <label for="" class="col-4 col-form-label fw-bold text-dark">
+                                            Status : <span class="text-danger">*</span>
+                                        </label>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-4">
+                                            <input type="text" id="textIsbn" class="form-control" required>
+                                        </div>
+                                        <div class="col-4">
+                                            <input type="number" id="textQty" class="form-control" required>
+                                        </div>
+                                        <div class="col-4">
+                                            <select id="selectStatus" class="form-select" required
+                                                onchange="selectDynamicValidator(this,'item','bookstatus_id')">
+                                                <option value="" selected disabled>Status</option>
+                                                <option value="Available">Available</option>
+                                                <option value="Out of Stock">Out of Stock</option>
+                                                <option value="Pre-order">Pre-order</option>
+                                                <option value="Discontinued">Discontinued</option>
+                                            </select>
+                                        </div>
+                                    </div><br>
+
+                                    <!-- Publisher , Publish date  -->
+                                    <div class="row">
+                                        <label for="" class="col-6 col-form-label fw-bold text-dark">
+                                            Publisher : <span class="text-danger">*</span>
+                                        </label>
+                                        <label for="" class="col-6 col-form-label fw-bold text-dark">
+                                            Publish Date : <span class="text-danger">*</span>
+                                        </label>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="input-group">
+                                                <span class="input-group-text">
+                                                    <i class="fa-solid fa-building"></i>
+                                                </span>
+                                                <input type="text" id="textIsbn" class="form-control" required
+                                                    onkeyup="">
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="input-group">
+                                                <span class="input-group-text">
+                                                    <i class="fa-regular fa-calendar-days"></i>
+                                                </span>
+                                                <input type="date" id="selectDate" class="form-control" required>
+                                            </div>
+                                        </div>
+                                    </div><br>
+
+                                    <!-- purchase price, sales price, Re-order point -->
+                                    <div class="row">
+                                        <div class="col-4">
+                                            <label for="" class="col-form-label fw-bold">
+                                                Purchace Price :<span class="text-danger">*</span>
+                                            </label>
+                                            <div class="input-group">
+                                                <span class="input-group-text fw-bold">Rs </span>
+                                                <input type="number" id="textPurchasePrice"
+                                                    class="form-control required" placeholder="enter purchase price">
+                                            </div>
+                                        </div>
+                                        <div class="col-4">
+                                            <label for="" class="col-form-label fw-bold">
+                                                Sales Price :<span class="text-danger">*</span>
+                                            </label>
+                                            <div class="input-group">
+                                                <span class="input-group-text fw-bold">Rs </span>
+                                                <input type="number" id="textPurchasePrice"
+                                                    class="form-control required" placeholder="enter purchase price">
+                                            </div>
+                                        </div>
+                                        <div class="col-4">
+                                            <label for="" class="col-form-label fw-bold text-dark">
+                                                Re-order point :<span class="text-danger">*</span>
+                                            </label>
+                                            <input type="number" id="textReorderPoint" class="form-control"
+                                                placeholder="enter Re-order point">
+                                        </div>
+                                    </div><br>
+
+
+                                    <!-- description-->
+
+                                    <div class="row">
+                                        <label for="" class="col-4 col-form-label fw-bold text-dark">
+                                            Description :
+                                        </label>
+                                        <div class="col-8">
+                                            <div class="input-group">
+                                                <span class="input-group-text">
+                                                    <i class="fa-solid fa-note-sticky"></i> </span>
+                                                <textarea class="form-control"></textarea>
+                                            </div>
+                                        </div>
+                                    </div><br><br>
+
+
+                                    <div class="row">
+                                        <div class="col-9"></div>
+                                        <div class="col-3">
+                                            <button class="btn fw-bold btnHover">Add Book</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- form area end -->
+
+                    <!-- table area start -->
+
+                    <table class="table table-bordered bg-light table-striped" id="itemTable">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Book Title</th>
+                                <th>Author </th>
+                                <th>Genre</th>
+                                <th>Purchase Price</th>
+                                <th>Sales Price</th>
+                                <th>Status</th>
+                                <th class="modify-button">Modify</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+                <div class=" col-1"></div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Print option -->
+
+</body>
+
+</html>

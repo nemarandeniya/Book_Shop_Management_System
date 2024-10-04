@@ -1,0 +1,37 @@
+/*
+ body {
+     background-color: rgb(9, 118, 172);
+ }
+
+.title-header-div{
+    background-color: rgba(121, 240, 175, 0.363);
+   
+} */
+
+.btnHover {
+    background-color: #FFFFFF;
+    color: #202123;
+    border-color: #202123;
+}
+
+.btnHover:hover {
+    background-color: #efecec;
+    color: #202123;
+    border-color: #202123;
+}
+
+.active {
+    text-align: center;
+    font-weight: bold;
+    background-color: greenyellow;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.inactive {
+    text-align: center;
+    font-weight: bold;
+    background-color: rgb(237, 63, 77);
+    border-radius: 10px;
+    padding: 5px;
+}
