@@ -44,18 +44,17 @@
             <div class="collapse collapse-horizontal" id="collapseWidthExample">
               <div class="card card-body  text-dark" style="width: 1100px">
                 <form id="formEmployee" onsubmit="return false">
-                  <!-- Full name -->
+                  <!-- Full name,caliing name -->
                   <div class="row">
-                    <label for="" class="col-3 col-form-label fw-bold">
-                      Full Name : <span class="text-danger">*</span>
-                    </label>
-                    <div class="col-9">
-                      <input type="text" class="form-control" id="textFullName" placeholder="Enter Your Name" required
-                        onkeyup="fullNameValidator(this);" />
+                    <div class="col-6">
+                      <label for="" class="col-3 col-form-label fw-bold">
+                        Full Name : <span class="text-danger">*</span>
+                      </label>
+                      <div class="col-9">
+                        <input type="text" class="form-control" id="textFullName" placeholder="Enter Your Name" required
+                          onkeyup="fullNameValidator(this);" />
+                      </div>
                     </div>
-                  </div><br>
-                  <!-- calling name , nic  -->
-                  <div class="row">
                     <div class="col-6">
                       <label for="" class="col-3 col-form-label fw-bold">
                         Calling Name : <span class="text-danger">*</span>
@@ -66,6 +65,9 @@
                           onkeyup="textValidator(this,'^([A-Z][a-z]{2,20})$','employee','callingname')" />
                       </div>
                     </div>
+                  </div><br>
+                  <!-- nic,image  -->
+                  <div class="row">
                     <div class="col-6">
                       <label for="" class="col-3 col-form-label fw-bold">
                         NIC : <span class="text-danger">*</span>
@@ -74,6 +76,20 @@
                         <input type="text" class="form-control" id="textNic" placeholder="Enter Your NIC" required
                           onkeyup="textValidator(this,'^(([0-9]{9}[VvXx])|([0-9]{12}))$' ,'employee','nic')" />
                       </div>
+                    </div>
+                    <div class="col-6">
+                      <label for="" class="col-3 col-form-label fw-bold">
+                        Image :
+                      </label>
+                      <button class="btn btn-secondary" id="btnSelectImage" onclick="empphoto.click()">Select
+                        Image</button>
+                      <button class="btn btn-secondary" id="btnClearImage">Clear Image</button>
+                      <img src="" style="height: 50px; width: 50px; border-radius: 20px;border: 1px solid black;"
+                        alt="ss" id="imgEmpPhoto">
+                      <input type="text" disabled class="form-control" id="textEmpPhoto">
+                      <input type="file" class="form-control d-none" id="empphoto"
+                        onchange="FileValidator(this,'employee','emp_photo','emp_photo_name','oldEmployee',imgEmpPhoto,textEmpPhoto)" />
+
                     </div>
                   </div><br>
                   <!-- Gender , Dob -->

@@ -69,6 +69,12 @@ public class Employee {
     @NotNull // cannot be null
     private String email;
 
+    @Column(name = "emp_photo")
+    private byte[] emp_photo;
+
+    @Column(name = "emp_photo_name")
+    private String emp_photo_name;
+
     @ManyToOne // relationship format
     @JoinColumn(name = "designation_id", referencedColumnName = "id") // join column
     private Designation designation_id;

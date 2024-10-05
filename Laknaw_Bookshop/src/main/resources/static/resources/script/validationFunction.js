@@ -81,3 +81,20 @@ const passwordRetypeValidator = (fieldId) => {
     fieldId.classList.add('is-invalid');
   }
 }
+
+const FileValidator = (fieldId, ob, propertyOne, propertyTwo, oldOb, priviousId, nameFieldId) => {
+  if (fieldId.value != "") {
+    let file = fieldId.files[0];//files enne array ekk widihta
+    nameFieldId.value = file['name'];
+    window[ob][propertyOne] = file['name']
+
+    let fileReader = new FileReader();
+
+    fileReader.onload = function (e) {
+      priviousId.src = e.target.result;
+      window[ob][propertyTwo] = btoa(e.target.result)//btoa eken result eka encrypt krnw
+    }
+    fileReader.readAsDataURL(file);
+    return;
+  }
+}
