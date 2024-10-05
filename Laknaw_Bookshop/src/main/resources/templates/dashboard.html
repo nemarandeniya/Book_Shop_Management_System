@@ -5,39 +5,105 @@
 
 <head>
     <title th:text="${title}"></title>
+    <!-- link dashboard css file -->
+    <link rel="stylesheet" href="resources/style/dashboard.css">
 </head>
 
 <body style="background-color: rgb(185, 186, 186);">
-    <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top" style="background-color:  #FFFFFF; height: 60px;"
+    <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top" style="background-color:  #FFFFFF; height: 80px;"
         th:fragment="navbarFragment">
-        <div class="container-fluid">
-            <button class="btn text-light" style="background-color:  #202123;" type="button" data-bs-toggle="offcanvas"
-                data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
-                backdrop</button>
-            <h1 class="navbar-brand text-dark" style="font-style:italic;">Welcome <span th:text="${logusername}"></span>
-            </h1>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
 
+        <div class="container-fluid position-relative">
+            <!-- Left-aligned 'Laknaw' -->
+            <h1 class="navbar-brand" style="font-style: italic; color: #202123; margin: 0;">L</h1>
+
+            <!-- Centered 'Dashboard' -->
+            <h2 class="position-absolute top-50 start-50 translate-middle" style="margin: 0;">Dashboard</h2>
+
+            <!-- Right-aligned Username link -->
+            <div class="ms-auto d-flex align-items-center">
+                <a class="text-dark" href="#" style="text-decoration: none;" th:text="${logusername}">Navbar</a>
+            </div>
         </div>
     </nav>
 
 
-    <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
-        aria-labelledby="offcanvasWithBothOptionsLabel" th:fragment="vertical-nav">
-        <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Backdrop with scrolling</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body">
-            <p>Try scrolling the rest of the page to see this option in action.</p>
+    <div class="container-fluid mt-2">
+        <div class="card-body">
+            <div class="row m-3">
+                <div class="text-center text-dark" style="margin-top: 100px;">
+                    <h1 class="text-dark" style="font-style:italic;">Welcome <span th:text="${logusername}"></span>
+                        <i class="fa-regular fa-handshake"></i>
+                    </h1>
+
+                </div>
+            </div>
+
+            <!-- <div class="row">
+                <div id="Employee" class="col-4 bg-dark text-light me-1">
+                    <h2 class="h2">
+                        Employee
+                    </h2>
+                </div>
+                <div id="User" class="col-4 bg-dark text-light me-1">
+                    <h2 class="h2">
+                        User
+                    </h2>
+                </div>
+                <div id="Privilege" class="col-4 bg-dark text-light me-1">
+                    <h2 class="h2">
+                        Privilege
+                    </h2>
+                </div>
+                <div id="Item" class="col-4 bg-dark text-light me-1">
+                    <h2 class="h2">
+                        Item
+                    </h2>
+                </div>
+            </div> -->
+
+            <div class="">
+
+                <ul class="box-info">
+                    <li>
+                        <div id="Employee">
+                            <i class="fa-solid fa-user"></i>
+                            <a href="employee">Employee</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div id="User">
+                            <i class="fa-solid fa-user"></i>
+                            <a href="user">User</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div id="Privilege">
+                            <i class="fa-solid fa-shield"></i>
+                            <a href="privilege">Privilege</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div id="Item">
+                            <i class="fa-solid fa-list"></i>
+                            <a href="item">Item</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 
-    <h2>Dashboard</h2>
+    <script>
+        moduleList = getajaxServiceRequest("/module/listByLoggedUser");
+        console.log(moduleList);
+
+        for (let moduleName of moduleList) {
+            let element = document.getElementById(moduleName)
+            element.classList.add("d-none")
+        }
+
+    </script>
 </body>
 
 </html>
