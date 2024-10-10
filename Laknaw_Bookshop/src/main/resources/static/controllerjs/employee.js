@@ -34,6 +34,7 @@ const refreshEmployeeTable = () => {
   const displayPropertyList = [
     { dataType: "text", propertyName: "fullname" },
     { dataType: "text", propertyName: "nic" },
+    { dataType: "photoarray", propertyName: "emp_photo" },
     { dataType: "text", propertyName: "email" },
     { dataType: "text", propertyName: "mobile" },
     { dataType: "function", propertyName: getDesignation },
@@ -54,7 +55,7 @@ const refreshEmployeeTable = () => {
   employees.forEach((element, index) => {
     if (element.employeestatus_id.name == "Delete") {
       if (userPrivilege.delete) {
-        employeeTable.children[1].children[index].children[7].children[0].children[1].children[1].visibility = "hidden";
+        employeeTable.children[1].children[index].children[8].children[0].children[1].children[1].visibility = "hidden";
       }
     }
   });

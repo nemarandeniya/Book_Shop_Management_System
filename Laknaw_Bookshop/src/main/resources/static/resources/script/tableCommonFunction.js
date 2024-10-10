@@ -20,6 +20,21 @@ const fillDataIntoTable = (tableId, dataList, displayPropertyList, refillFunctio
       if (ob.dataType == 'function') {
         td.innerHTML = ob.propertyName(element);
       }
+      if (ob.dataType == 'photoarray') {
+        let img = document.createElement("img");
+        img.style.width = "50px";
+        img.style.height = "50px";
+        img.style.border = "1px solid black";
+        img.style.borderRadius = "20px";
+        if (dataList[ind][ob.propertyName] == null) {
+          img.src = "resources/image/user.png";
+        } else {
+          img.src = atob(dataList[ind][ob.propertyName])
+        }
+
+        td.appendChild(img)
+        console.log("jjjjjjj" + atob(dataList[ind][ob.propertyName]));
+      }
 
       tr.appendChild(td);
 
