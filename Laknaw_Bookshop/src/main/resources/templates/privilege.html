@@ -9,12 +9,14 @@
 
     <!-- link js file -->
     <script src="controllerjs/privilege.js"></script>
+    <style th:replace="~{component::vertical-nav-style}"></style>
 
     <title th:text="${title}"></title>
 </head>
 
 <body style="background-color:  #E6EBEE">
     <nav th:replace="~{component::navbarFragment}"></nav>
+    <nav th:replace="~{component::vertical-nav}"></nav>
 
 
     <div class="container-fluid mt-5">

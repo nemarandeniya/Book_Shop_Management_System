@@ -10,12 +10,14 @@
     <!-- link js file -->
     <script src="controllerjs/item.js"></script>
     <title th:text="${title}"></title>
+    <style th:replace="~{component::vertical-nav-style}"></style>
 
 </head>
 
 <body style="background-color:  #E6EBEE">
 
     <nav th:replace="~{component::navbarFragment}"></nav>
+    <nav th:replace="~{component::vertical-nav}"></nav>
 
 
     <div class="container-fluid mt-5">
